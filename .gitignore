@@ -1,2 +1,21 @@
-# Google App Engine generated folder
-appengine-generated/
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Django
+*.log
+*.sqlite3
+nokecodes/settings/local.py
+static/
+
+# Pycharm
+/.idea
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

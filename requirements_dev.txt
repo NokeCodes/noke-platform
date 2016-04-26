@@ -1,0 +1,7 @@
+# Additional Requirements for development
+
+-r requirements.txt
+
+# AWS Utilities
+awscli
+awsebcli
