@@ -9,6 +9,9 @@ class Project(models.Model):
 
     members = models.ManyToManyField(User, through='Membership')
 
+    def __str__(self):
+        return self.title
+
 
 class Membership(models.Model):
     OWNER = 0
