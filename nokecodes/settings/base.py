@@ -14,8 +14,6 @@ ALLOWED_HOSTS = ['*']
 
 
 THIRD_PARTY_APPS = [
-    'projects',
-    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -25,6 +23,8 @@ THIRD_PARTY_APPS = [
 ]
 
 PROJECT_APPS = [
+    'projects',
+    'users',
 ]
 
 INSTALLED_APPS = THIRD_PARTY_APPS + PROJECT_APPS
