@@ -21,4 +21,4 @@ static/
 !.elasticbeanstalk/*.global.yml
 
 .DS_Store
-nokecodes/.DS_Store
+*~
