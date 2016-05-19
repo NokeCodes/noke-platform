@@ -71,10 +71,14 @@
       <div class="row">
           {% for project in projs %}
 
-        <div class="col-md-4">
-          <h2>{{ project.title }}</h2>
-          <p>{{ project.about }}</p>
-          <p><a class="btn btn-default" href="{% url 'projects:show' project.id %}" role="button">View details &raquo;</a></p>
+        <div class="col-md-3">
+          <a class="project-link" href="{% url 'projects:show' project.id %}">
+            <div class="project-card">
+              <h2>{{ project.title }}</h2>
+              <hr/>
+              <p>{{ project.about }}</p>            
+            </div>
+          </a>
         </div>
         {% endfor %}
       </div>
@@ -82,7 +86,7 @@
       <hr>
 
       <footer>
-        <p>&copy; 2015 Company, Inc.</p>
+        <p>&copy; 2016 Noke Codes, Inc.</p>
       </footer>
     </div> <!-- /container -->
 
