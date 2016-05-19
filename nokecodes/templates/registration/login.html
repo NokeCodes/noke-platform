@@ -3,7 +3,7 @@
 {% block body %}
 
 {% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
+<p class="alert alert-danger">Your username and password didn't match. Please try again.</p>
 {% endif %}
 
 {% if next %}
@@ -28,7 +28,7 @@
 </tr>
 </table>
 
-<input type="submit" value="login" />
+<input class="btn btn-primary" type="submit" value="login" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
