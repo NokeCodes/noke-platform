@@ -15,6 +15,7 @@
 
     <!-- Bootstrap core CSS -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -41,7 +42,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><img src="https://static.wixstatic.com/media/9f780f_ba3e120d3c854334a2d94eb3a684a3ba.png/v1/fill/w_1200,h_532,al_c,usm_0.66_1.00_0.01/9f780f_ba3e120d3c854334a2d94eb3a684a3ba.png" style="height: 100%;"/></a>
+          <a class="navbar-brand" href="{% url 'home' %}"><img src="https://static.wixstatic.com/media/9f780f_ba3e120d3c854334a2d94eb3a684a3ba.png/v1/fill/w_1200,h_532,al_c,usm_0.66_1.00_0.01/9f780f_ba3e120d3c854334a2d94eb3a684a3ba.png" style="height: 100%;"/></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
         	<ul class="nav navbar-nav navbar-right">
@@ -60,8 +61,11 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
+        {% block jumbotron %}
+
         <h1>Noke Platform</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p>Explore projects from Noke Codes</p>
+        {% endblock %}
       </div>
     </div>
 
@@ -79,7 +83,7 @@
         <div class="col-md-3">
           <a class="project-link" href="{% url 'projects:show' project.id %}">
             <div class="project-card">
-              <h2>{{ project.title }}</h2>
+              <h3>{{ project.title }}</h3>
               <hr/>
               <p>{{ project.about|truncatechars:76 }}</p>            
             </div>

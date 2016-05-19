@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 
+
+    {% block jumbotron %}
+        <h1>{{ project.title }}</h1>
+    {% endblock %}
+
 {% block body %}
 
-  <p>{{ project.title }}</p>
+<h2>About</h2>
   <p>{{ project.about }}</p>
+{% if project.github_url %}
+<h2>Check it out</h2>
+  <p><a href="{{ project.github_url }}"><i class="fa fa-github fa-2x" aria-hidden="true"></i> {{ project.github_url }}</a></p>
+
+  {% endif %}
 
 {% endblock %}

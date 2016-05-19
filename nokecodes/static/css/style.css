@@ -38,9 +38,10 @@ color: #fff;
   {
   	    background-color: #fff;
     padding: 5px;
-    min-height: 200px;
+    min-height: 250px;
     border-radius: 5px;
     border: 1px solid #e6e6e6;
+    margin-bottom: 30px;
 
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
   }
