@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils import timezone
 
 
 class Project(models.Model):
@@ -23,10 +24,9 @@ class Membership(models.Model):
         (FOLLOWER, 'Follower'),
     )
 
-
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     type = models.IntegerField(choices=MEMBER_TYPES, default=FOLLOWER)
 
-    date_requested = models.DateTimeField(null=True)
+    date_requested = models.DateTimeField(null=True, default=timezone.now)
     date_joined = models.DateTimeField(null=True)

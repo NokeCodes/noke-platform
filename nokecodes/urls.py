@@ -15,11 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.auth.views import login, logout
 
 from projects import views
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.index, name='home'),
+
+    # Login / Logout.
+    url(r'^login/$', login, name='login'),
+    url(r'^logout/$', logout, {'next_page': 'home'}, name='logout'),
+
     url(r'^projects/', include('projects.urls')),
     url(r'^admin/', admin.site.urls),
 ]
