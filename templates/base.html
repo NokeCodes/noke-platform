@@ -81,7 +81,7 @@
             <div class="project-card">
               <h2>{{ project.title }}</h2>
               <hr/>
-              <p>{{ project.about }}</p>            
+              <p>{{ project.about|truncatechars:76 }}</p>            
             </div>
           </a>
         </div>
