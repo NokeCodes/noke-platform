@@ -1,5 +1,20 @@
 {% extends 'base.html' %}
 
-{% block body %}
+{% block jumbotron %}
+    <h1>Noke Platform</h1>
+    <p>Explore projects from Noke Codes</p>
+{% endblock %}
 
+{% block body %}
+    {% for project in projs %}
+    <div class="col-md-3">
+        <a class="project-link" href="{% url 'projects:details' project.slug %}">
+            <div class="project-card">
+                <h3>{{ project.title }}</h3>
+                <hr/>
+                <p>{{ project.about|truncatechars:76 }}</p>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
 {% endblock %}
