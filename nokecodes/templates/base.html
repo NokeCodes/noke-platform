@@ -38,6 +38,10 @@
           <a class="navbar-brand" href="{% url 'home' %}"><img src="https://static.wixstatic.com/media/9f780f_ba3e120d3c854334a2d94eb3a684a3ba.png/v1/fill/w_1200,h_532,al_c,usm_0.66_1.00_0.01/9f780f_ba3e120d3c854334a2d94eb3a684a3ba.png" style="height: 100%;"/></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li><a href="{% url 'projects:index' %}">Projects</a></li>
+            <li><a href="{% url 'users:index' %}">Users</a></li>
+          </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if request.user.is_authenticated %}
             <li><a href="{% url 'users:profile' request.user %}">{% bootstrap_icon 'user' %} {{ request.user.profile.display_name }}</a></li>
