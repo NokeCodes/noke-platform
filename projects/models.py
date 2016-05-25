@@ -1,3 +1,4 @@
+from autoslug import AutoSlugField
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
@@ -5,6 +6,7 @@ from django.utils import timezone
 
 class Project(models.Model):
     title = models.CharField(max_length=100)
+    slug = AutoSlugField(populate_from='title', unique=True)
     about = models.TextField(default='', blank=True)
     github_url = models.URLField(blank=True)
 

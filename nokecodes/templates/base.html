@@ -81,7 +81,7 @@
           {% for project in projs %}
 
         <div class="col-md-3">
-          <a class="project-link" href="{% url 'projects:show' project.id %}">
+          <a class="project-link" href="{% url 'projects:details' project.slug %}">
             <div class="project-card">
               <h3>{{ project.title }}</h3>
               <hr/>

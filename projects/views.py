@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.template import loader
+from django.shortcuts import render, get_object_or_404
 
 from projects.models import Project
 
@@ -13,9 +12,9 @@ def index(request):
     return render(request, 'projects/index.html', context)
 
 
-def show(request, project_id):
-    p = Project.objects.get(id=project_id)
+def details(request, slug):
+    project = get_object_or_404(Project, slug=slug)
     context = {
-        'project': p,
+        'project': project,
     }
     return render(request, 'projects/show.html', context)
