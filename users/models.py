@@ -4,9 +4,15 @@ from django.db.models.signals import post_save
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True, related_name='profile')
 
     bio = models.TextField(default='', blank=True)
+    website = models.URLField(default='', blank=True)
+    organization = models.CharField(max_length=100, default='', blank=True)
+
+    @property
+    def display_name(self):
+        return self.user.first_name or self.user.username
 
 
 def create_profile(sender, **kwargs):

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block jumbotron %}
+  <h1>Profile</h1>
+  <p>Update your public profile</p>
+{% endblock %}
+
+{% block body %}
+  <form method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form user_form %}
+    {% bootstrap_form profile_form %}
+    {% buttons submit='Save' reset='Reset' %}{% endbuttons %}
+  </form>
+{% endblock %}

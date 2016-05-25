@@ -27,5 +27,6 @@ urlpatterns = [
     url(r'^logout/$', logout, {'next_page': 'home'}, name='logout'),
 
     url(r'^p/', include('projects.urls')),
+    url(r'^u/', include('users.urls')),
     url(r'^admin/', admin.site.urls),
 ]
