@@ -39,8 +39,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'users:profile' user %}">{% bootstrap_icon 'user' %} {{ user.profile.display_name }}</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'users:profile' request.user %}">{% bootstrap_icon 'user' %} {{ request.user.profile.display_name }}</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
             <li><a href="#">Sign Up</a></li>

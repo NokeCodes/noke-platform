@@ -3,17 +3,17 @@
 {% load bootstrap3 %}
 
 {% block jumbotron %}
-  <h1>{{ profile_user.get_full_name|default:profile_user }}</h1>
-  {% if profile_user.profile.organization %}
+  <h1>{{ user.get_full_name|default:user }}</h1>
+  {% if user.profile.organization %}
   <p>{{ user.profile.organization }}</p>
   {% endif %}
 {% endblock %}
 
 {% block body %}
-  {% if user == profile_user %}
-  <p><a href="{% url 'users:edit_profile' profile_user.username %}">{% bootstrap_icon 'pencil' %} Edit</a></p>
+  {% if request.user == user %}
+  <p><a href="{% url 'users:edit_profile' user.username %}">{% bootstrap_icon 'pencil' %} Edit</a></p>
   {% endif %}
   <h2>About</h2>
-  <p>{{ profile_user.profile.bio }}</p>
-  <p><a href="{{ profile_user.profile.website }}">{{ profile_user.profile.website }}</a></p>
+  <p>{{ user.profile.bio }}</p>
+  <p><a href="{{ user.profile.website }}">{{ user.profile.website }}</a></p>
 {% endblock %}

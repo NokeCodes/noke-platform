@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block jumbotron %}
+    <h1>Noke Platform</h1>
+    <p>Meet our users!</p>
+{% endblock %}
+
+{% block body %}
+    {% for user in users %}
+    <div class="col-md-3">
+        <a class="project-link" href="{% url 'users:profile' user.username %}">
+            <div class="project-card">
+                <h3>{{ user.username }}</h3>
+                <hr/>
+                <p>{{ user.get_full_name }}</p>
+                <p>{{ user.profile.organization }}</p>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+{% endblock %}

@@ -1,15 +1,16 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.http import HttpResponse
 from django.shortcuts import render, HttpResponseRedirect
 
 from .forms import UserForm, UserProfileForm
 
 
 def index(request):
-    users = User.objects.all()
-    return HttpResponse(', '.join([user.username for user in users]))
+    users = User.objects.all().order_by('username')
+    return render(request, 'users/users_list.html', {
+        'users': users,
+    })
 
 
 def profile(request, username):
@@ -18,7 +19,7 @@ def profile(request, username):
     except User.DoesNotExist:
         return HttpResponseRedirect(reverse('users:index'))
     return render(request, 'users/profile.html', {
-        'profile_user': profile_user,
+        'user': profile_user,
     })
 
 
