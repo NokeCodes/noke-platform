@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True, related_name='profile')
 
-    bio = models.TextField(default='', blank=True)
+    bio = models.TextField(default='', blank=True, help_text='Markdown accepted', verbose_name='About')
     website = models.URLField(default='', blank=True)
     organization = models.CharField(max_length=100, default='', blank=True)
 

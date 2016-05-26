@@ -5,3 +5,4 @@ psycopg2==2.6.1
 
 django-autoslug==1.9.3
 django-bootstrap3==7.0.1
+django-markdown-deux==1.0.5

@@ -21,6 +21,7 @@ THIRD_PARTY_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'markdown_deux',
 ]
 
 PROJECT_APPS = [
