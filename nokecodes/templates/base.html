@@ -47,7 +47,7 @@
             <li><a href="{% url 'users:profile' request.user %}">{% bootstrap_icon 'user' %} {{ request.user.profile.display_name }}</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
-            <li><a href="#">Sign Up</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
             <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
             {% endif %}
           </ul>

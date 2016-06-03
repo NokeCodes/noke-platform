@@ -17,14 +17,16 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth.views import login, logout
 
-from projects import views
+from projects.views import index as project_index
+from users.views import signup
 
 urlpatterns = [
-    url(r'^$', views.index, name='home'),
+    url(r'^$', project_index, name='home'),
 
     # Login / Logout.
     url(r'^login/$', login, name='login'),
     url(r'^logout/$', logout, {'next_page': 'home'}, name='logout'),
+    url(r'^signup/$', signup, name='signup'),
 
     url(r'^p/', include('projects.urls')),
     url(r'^u/', include('users.urls')),
