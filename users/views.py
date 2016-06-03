@@ -7,7 +7,7 @@ from .forms import UserForm, UserProfileForm
 
 
 def index(request):
-    users = User.objects.all().order_by('username')
+    users = User.objects.all().select_related('profile').order_by('username')
     return render(request, 'users/users_list.html', {
         'users': users,
     })
@@ -15,7 +15,7 @@ def index(request):
 
 def profile(request, username):
     try:
-        profile_user = User.objects.get(username=username)
+        profile_user = User.objects.select_related('profile').get(username=username)
     except User.DoesNotExist:
         return HttpResponseRedirect(reverse('users:index'))
     return render(request, 'users/profile.html', {
@@ -25,11 +25,11 @@ def profile(request, username):
 
 @login_required
 def edit_profile(request, username):
-    if request.user.username != username:
+    if request.user.get_username() != username:
         # Can only edit your own profile.
         return HttpResponseRedirect(reverse('users:profile', args=(username,)))
 
-    user = User.objects.get(username=username)
+    user = User.objects.select_related('profile').get(username=username)
 
     if request.method == 'POST':
         user_form = UserForm(request.POST, request.FILES, instance=user)

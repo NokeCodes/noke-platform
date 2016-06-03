@@ -12,7 +12,7 @@ class UserProfile(models.Model):
 
     @property
     def display_name(self):
-        return self.user.first_name or self.user.username
+        return self.user.first_name or self.user.get_username()
 
 
 def create_profile(sender, **kwargs):
