@@ -15,14 +15,15 @@ def index(request):
 
 def details(request, slug):
     project = get_object_or_404(Project, slug=slug)
-    try:
-        membership = Membership.objects.get(user=request.user, project=project)
-    except Membership.DoesNotExist:
-        membership = None
     context = {
         'project': project,
-        'membership': membership,
     }
+    if request.user.is_authenticated():
+        try:
+            membership = Membership.objects.get(user=request.user, project=project)
+        except Membership.DoesNotExist:
+            membership = None
+        context['membership'] = membership
     return render(request, 'projects/details.html', context)
 
 
