@@ -7,44 +7,74 @@
 {% endblock %}
 
 {% block body %}
-  {% if request.user.is_authenticated %}
-  <form action="{% url 'projects:join' project.slug %}" method="post">
-    {% csrf_token %}
-    {% with action=membership.is_active|yesno:'unjoin,join' %}
-    {% bootstrap_button action|capfirst button_type='submit' name='action' value=action %}
-    {% endwith %}
-  </form>
-  {% endif %}
+<div class="row">
+  <div class="col-md-3">
 
-  <h2>About</h2>
-  <p>{{ project.about }}</p>
+    <div class="org">
+      <div class="org-inner">
+        <img class="org-img" src="{{ project.image_url }}">
+      </div>
+    </div>
 
-  {% if project.github_url %}
-  <h2>Check it out</h2>
-  <p><a href="{{ project.github_url }}"><i class="fa fa-github fa-2x" aria-hidden="true"></i> {{ project.github_url }}</a></p>
-  {% endif %}
+    {% if project.organization_url %}
+      <div style="padding-top: 15px;">
+        <a href="{{ project.organization_url }}"><i class="fa fa-link" aria-hidden="true"></i> Visit Website</a>
+      </div>
+    {% endif %}
 
-  {% if project.leaders %}
-  <h2>Leads</h2>
-  {% for member in project.leaders %}
-  <p><a href="{% url 'users:profile' member.get_username %}">{{ member.get_username }}</a></p>
-  {% endfor %}
-  {% endif %}
 
-  {% if project.participants %}
-  <h2>Participants</h2>
-  {% for member in project.participants %}
-  <p><a href="{% url 'users:profile' member.get_username %}">{{ member.get_username }}</a></p>
-  {% endfor %}
-  {% endif %}
+      {% if request.user.is_authenticated %}
 
-  {% if membership.is_leader or request.user.is_staff %}
-  <h2>Prospects</h2>
-  {% for member in project.prospects %}
-  <p><a href="{% url 'users:profile' member.get_username %}">{{ member.get_username }}</a></p>
-  {% empty %}
-  <p>No current prospects</p>
-  {% endfor %}
-  {% endif %}
+    <h3>Get Involved</h3>
+    <div style="padding-top: 15px;">
+      
+      <form action="{% url 'projects:join' project.slug %}" method="post">
+        {% csrf_token %}
+        {% with action=membership.is_active|yesno:'unjoin,join' %}
+        {% bootstrap_button action|capfirst button_type='submit' name='action' value=action %}
+        {% endwith %}
+      </form>
+    </div>
+      {% endif %}
 
+
+  </div>
+  <div class="col-md-7">
+
+    <h2>About</h2>
+    <p>{{ project.about }}</p>
+
+    {% if project.github_url %}
+    <h2>Check it out</h2>
+    <p><a href="{{ project.github_url }}"><i class="fa fa-github fa-2x" aria-hidden="true"></i> {{ project.github_url }}</a></p>
+    {% endif %}
+
+    {% if project.leaders %}
+    <h2>Leads</h2>
+    {% for member in project.leaders %}
+    <p><a href="{% url 'users:profile' member.get_username %}">{{ member.get_username }}</a></p>
+    {% endfor %}
+    {% endif %}
+
+    {% if project.participants %}
+    <h2>Participants</h2>
+    {% for member in project.participants %}
+    <p><a href="{% url 'users:profile' member.get_username %}">{{ member.get_username }}</a></p>
+    {% endfor %}
+    {% endif %}
+
+    {% if membership.is_leader or request.user.is_staff %}
+    <h2>Prospects</h2>
+    {% for member in project.prospects %}
+    <p><a href="{% url 'users:profile' member.get_username %}">{{ member.get_username }}</a></p>
+    {% empty %}
+    <p>No current prospects</p>
+    {% endfor %}
+    {% endif %}
+  </div>
+
+  <div class="col-md-2">
+    <!-- Add users, organizers, etc -->
+        </a>
+  </div>
 {% endblock %}

@@ -10,6 +10,7 @@ class Project(models.Model):
     about = models.TextField(default='', blank=True)
     github_url = models.URLField(blank=True)
     image_url = models.URLField(blank=True)
+    organization_url = models.URLField(blank=True)
 
     members = models.ManyToManyField(User, through='Membership')
 
