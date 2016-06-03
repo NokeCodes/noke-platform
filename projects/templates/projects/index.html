@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block jumbotron %}
     <h1>Noke Platform</h1>
@@ -6,11 +7,16 @@
 {% endblock %}
 
 {% block body %}
+
+
+
+
     {% for project in projs %}
     <div class="col-md-3">
         <a class="project-link" href="{% url 'projects:details' project.slug %}">
             <div class="project-card">
-                <h3>{{ project.title }}</h3>
+                <div class="card-img-holder"><img class="card-img" src="{{ project.image_url }}" /></div>
+                <h4>{{ project.title }}</h4>
                 <hr/>
                 <p>{{ project.about|truncatechars:76 }}</p>
             </div>

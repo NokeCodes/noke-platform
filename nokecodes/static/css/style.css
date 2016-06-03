@@ -26,6 +26,10 @@ background: -webkit-linear-gradient(45deg,  #118ae0 0%,#2989d8 41%,#1e5799 100%)
 background: linear-gradient(45deg,  #118ae0 0%,#2989d8 41%,#1e5799 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#118ae0', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
+//background image from: https://www.flickr.com/photos/brent_nashville/6324940191;
+background-image: url('/static/images/RoanokeSky.png');
+background-size: cover;
+background-position: center;
 color: #fff;
   }
 
@@ -38,7 +42,7 @@ color: #fff;
   {
   	    background-color: #fff;
     padding: 5px;
-    min-height: 250px;
+    min-height: 300px;
     border-radius: 5px;
     border: 1px solid #e6e6e6;
     margin-bottom: 30px;
@@ -65,3 +69,22 @@ color: #fff;
   	    text-decoration: none;
     line-height: inherit;
   }
+
+
+  .card-img
+  {
+    max-width: 100%;
+    max-height: 100px;
+    margin: 0 auto;
+  }
+
+  .card-img-holder
+  {
+    //width:100px;
+    margin: 0 auto;
+    height: 100px;
+  }
+
+
+
+
