@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load bootstrap3 %}
+{% load markdown_deux_tags %}
 
 {% block jumbotron %}
   <h1>{{ user.get_full_name|default:user }}</h1>
@@ -11,9 +12,9 @@
 
 {% block body %}
   {% if request.user == user %}
-  <p><a href="{% url 'users:edit_profile' user.username %}">{% bootstrap_icon 'pencil' %} Edit</a></p>
+  <p><a href="{% url 'users:edit_profile' user.get_username %}">{% bootstrap_icon 'pencil' %} Edit</a></p>
   {% endif %}
   <h2>About</h2>
-  <p>{{ user.profile.bio }}</p>
+  <p>{{ user.profile.bio|markdown }}</p>
   <p><a href="{{ user.profile.website }}">{{ user.profile.website }}</a></p>
 {% endblock %}

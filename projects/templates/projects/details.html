@@ -1,15 +1,50 @@
 {% extends 'base.html' %}
 
+{% load bootstrap3 %}
+
 {% block jumbotron %}
     <h1>{{ project.title }}</h1>
 {% endblock %}
 
 {% block body %}
-    <h2>About</h2>
-    <p>{{ project.about }}</p>
+  {% if request.user.is_authenticated %}
+  <form action="{% url 'projects:join' project.slug %}" method="post">
+    {% csrf_token %}
+    {% with action=membership.is_active|yesno:'unjoin,join' %}
+    {% bootstrap_button action|capfirst button_type='submit' name='action' value=action %}
+    {% endwith %}
+  </form>
+  {% endif %}
 
-    {% if project.github_url %}
-    <h2>Check it out</h2>
-    <p><a href="{{ project.github_url }}"><i class="fa fa-github fa-2x" aria-hidden="true"></i> {{ project.github_url }}</a></p>
-    {% endif %}
+  <h2>About</h2>
+  <p>{{ project.about }}</p>
+
+  {% if project.github_url %}
+  <h2>Check it out</h2>
+  <p><a href="{{ project.github_url }}"><i class="fa fa-github fa-2x" aria-hidden="true"></i> {{ project.github_url }}</a></p>
+  {% endif %}
+
+  {% if project.leaders %}
+  <h2>Leads</h2>
+  {% for member in project.leaders %}
+  <p><a href="{% url 'users:profile' member.get_username %}">{{ member.get_username }}</a></p>
+  {% endfor %}
+  {% endif %}
+
+  {% if project.participants %}
+  <h2>Participants</h2>
+  {% for member in project.participants %}
+  <p><a href="{% url 'users:profile' member.get_username %}">{{ member.get_username }}</a></p>
+  {% endfor %}
+  {% endif %}
+
+  {% if membership.is_leader or request.user.is_staff %}
+  <h2>Prospects</h2>
+  {% for member in project.prospects %}
+  <p><a href="{% url 'users:profile' member.get_username %}">{{ member.get_username }}</a></p>
+  {% empty %}
+  <p>No current prospects</p>
+  {% endfor %}
+  {% endif %}
+
 {% endblock %}
