@@ -6,9 +6,11 @@ from projects.models import Project, Membership
 
 
 def index(request):
-    projs = Project.objects.all()
+    currentProjs = Project.objects.all().filter(project_year=2016)
+    olderProjs = Project.objects.all().exclude(project_year=2016)
     context = {
-        'projs': projs,
+        'currentProjs': currentProjs,
+        'olderProjs': olderProjs,
     }
     return render(request, 'projects/index.html', context)
 

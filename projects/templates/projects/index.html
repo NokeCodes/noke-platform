@@ -9,9 +9,9 @@
 {% block body %}
 
 
-
-
-    {% for project in projs %}
+<div class="row">
+<h2>Current Projects for 2016</h2>
+    {% for project in currentProjs %}
     <div class="col-md-3">
         <a class="project-link" href="{% url 'projects:details' project.slug %}">
             <div class="project-card">
@@ -23,4 +23,21 @@
         </a>
     </div>
     {% endfor %}
+</div>
+<hr/>
+<div class="row">
+<h2>Projects</h2>
+    {% for project in olderProjs %}
+    <div class="col-md-3">
+        <a class="project-link" href="{% url 'projects:details' project.slug %}">
+            <div class="project-card">
+                <div class="card-img-holder"><img class="card-img" src="{{ project.image_url }}" /></div>
+                <h4>{{ project.title }}</h4>
+                <hr/>
+                <p>{{ project.about|truncatechars:76 }}</p>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

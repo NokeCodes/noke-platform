@@ -11,6 +11,7 @@ class Project(models.Model):
     github_url = models.URLField(blank=True)
     image_url = models.URLField(blank=True)
     organization_url = models.URLField(blank=True)
+    project_year = models.IntegerField(default=0)
 
     members = models.ManyToManyField(User, through='Membership')
 
